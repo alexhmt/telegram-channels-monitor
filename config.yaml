@@ -1,0 +1,38 @@
+# Telegram Downloader Configuration
+telegram:
+  session_name: "telegram_downloader"
+  api_id: null  # Will be loaded from auth_info.py
+  api_hash: null  # Will be loaded from auth_info.py
+
+# Logging configuration
+logging:
+  level: INFO
+  file: logs/downloader.log
+  max_file_size: 10MB
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Download settings
+download:
+  chunk_size: 1000  # Number of messages to process before writing to file
+  max_retries: 3
+  retry_delay: 5  # seconds
+  timeout: 30  # seconds for network operations
+
+# Output settings
+output:
+  directory: downloads
+  formats: ["html"]  # json, csv, html
+  filename_template: "{chat_id}_{chat_title}_{date_suffix}"
+  sanitize_filenames: true
+
+# Cache settings
+cache:
+  file: dialogs_cache.json
+  auto_update: true
+  update_interval: 3600  # seconds
+
+# Performance settings
+performance:
+  max_concurrent_downloads: 5
+  memory_limit: 1024MB  # Soft limit for memory usage

@@ -4,6 +4,5 @@ __pycache__/
 .kilocode/
 *.json
 *.session
-
-
-
+downloads/
+*.log

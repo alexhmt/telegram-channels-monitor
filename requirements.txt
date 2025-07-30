@@ -1,2 +1,19 @@
-pyTelegramBotAPI
-Telethon
+# Core dependencies
+telethon>=1.24.0
+pyyaml>=6.0
+aiofiles>=23.2.0
+
+# Export formats
+pandas>=2.0.0
+openpyxl>=3.1.0
+lxml>=4.9.0
+
+# Progress and UI
+rich>=13.0.0
+tqdm>=4.65.0
+
+# Utilities
+python-dateutil>=2.8.0
+# System monitoring
+psutil>=5.9.0
+pathlib2>=2.3.7; python_version < "3.4"

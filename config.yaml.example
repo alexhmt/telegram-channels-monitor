@@ -1,0 +1,158 @@
+# Telegram Downloader Configuration
+
+# Настройки скачивания
+download:
+  batch_size: 1000  # Количество сообщений в пакете
+  max_concurrent_media: 3  # Максимальное количество одновременных загрузок медиа
+  resume_downloads: true  # Возобновление прерванных загрузок
+  retry_attempts: 3  # Количество попыток при ошибке
+  retry_delay: 5  # Задержка между попытками (секунды)
+
+# Директории
+directories:
+  export_dir: "exports"  # Директория для экспорта данных
+  media_dir: "downloads/media"  # Директория для медиафайлов
+  log_dir: "logs"  # Директория для логов
+
+# Форматы экспорта по умолчанию
+export_formats:
+  - json
+  - csv
+  - excel
+
+# Фильтры контента
+filters:
+  # Типы контента для включения (оставьте пустым для всех)
+  content_types:
+    - text
+    - photo
+    - video
+    - audio
+    - document
+  
+  # Исключить типы контента
+  exclude_content_types:
+    - sticker
+    - voice
+  
+  # Текстовые фильтры
+  text_filters:
+    include_keywords:
+      - "python"
+      - "programming"
+      - "development"
+    
+    exclude_patterns:
+      - "spam"
+      - "advertisement"
+      - "bot"
+      - "fake"
+    
+    # Минимальная и максимальная длина сообщения
+    min_length: 1
+    max_length: 10000
+  
+  # Фильтры по дате
+  date_filters:
+    # Скачать сообщения после этой даты (YYYY-MM-DD)
+    start_date: null
+    
+    # Скачать сообщения до этой даты (YYYY-MM-DD)
+    end_date: null
+  
+  # Фильтры по отправителю
+  sender_filters:
+    # ID пользователей для включения (оставьте пустым для всех)
+    include_users: []
+    
+    # ID пользователей для исключения
+    exclude_users: []
+    
+    # Имена пользователей для включения
+    include_usernames: []
+    
+    # Имена пользователей для исключения
+    exclude_usernames: []
+
+# Валидация данных
+validation:
+  # Обязательные поля в сообщении
+  required_fields:
+    - id
+    - date
+    - message
+  
+  # Максимальный размер медиафайла (в байтах)
+  max_file_size: 52428800  # 50MB
+  
+  # Разрешенные MIME типы медиафайлов
+  allowed_media_types:
+    - image/jpeg
+    - image/png
+    - image/gif
+    - video/mp4
+    - video/avi
+    - audio/mp3
+    - audio/wav
+    - application/pdf
+    - application/msword
+    - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  
+  # Очистка текста
+  text_cleaning:
+    remove_urls: true
+    remove_emails: true
+    remove_phone_numbers: false
+    normalize_whitespace: true
+    remove_empty_messages: true
+
+# Настройки медиа
+media:
+  # Организация по папкам
+  organize_by_type: true
+  organize_by_date: false
+  
+  # Параметры скачивания
+  download_thumbnails: true
+  preserve_filename: true
+  
+  # Обработка дубликатов
+  check_duplicates: true
+  duplicate_check_method: "hash"  # "hash" или "filename"
+
+# Логирование
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file_rotation: true
+  max_file_size: "10MB"
+  backup_count: 5
+
+# Производительность
+performance:
+  # Ограничение памяти (в МБ)
+  memory_limit: 512
+  
+  # Использовать кэширование
+  use_cache: true
+  
+  # Очистка кэша после завершения
+  clear_cache_on_exit: false
+
+# Расширенные настройки
+advanced:
+  # Пауза между запросами к API (секунды)
+  api_delay: 1
+  
+  # Таймаут для запросов (секунды)
+  request_timeout: 30
+  
+  # Максимальное количество попыток переподключения
+  max_reconnect_attempts: 5
+  
+  # Использовать прокси (опционально)
+  proxy: null
+  # proxy:
+  #   host: "127.0.0.1"
+  #   port: 8080
+  #   username: "user"
+  #   password: "pass"
